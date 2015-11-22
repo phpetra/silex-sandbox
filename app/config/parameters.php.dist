@@ -1,7 +1,7 @@
 <?php
 
 // SITE configs
-$app['site-name'] = 'Silex sandbox';
+$app['site_name'] = 'Silex sandbox';
 $app['site-email'] = 'dreis@xs4all.nl';
 $app['upload_dir'] = __DIR__ . '/../storage/uploads';
 
