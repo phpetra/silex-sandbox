@@ -1,0 +1,9 @@
+.idea
+.DS_Store
+/app/storage/cache/*
+/app/storage/log/*
+/app/storage/uploads/*
+/vendor/
+/app/config/parameters.php
+
+tests/_output/*

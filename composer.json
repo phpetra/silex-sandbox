@@ -1,0 +1,23 @@
+{
+    "require": {
+        "silex/silex": "~1.2",
+        "symfony/config": "~2.3",
+        "twig/twig": ">=1.8,<2.0-dev",
+        "symfony/twig-bridge": "~2.3",
+        "monolog/monolog": "^1.17"
+    },
+
+    "scripts": {
+        "post-install-cmd": "Pdx\\Silex\\Composer::install",
+        "post-update-cmd": "Pdx\\Silex\\Composer::update"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Pdx": "src"
+        }
+    },
+    "require-dev": {
+        "codeception/codeception": "^2.1"
+    }
+}

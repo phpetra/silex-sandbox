@@ -1,0 +1,53 @@
+<?php
+
+// SITE configs
+$app['site-name'] = 'Silex sandbox';
+$app['site-email'] = 'dreis@xs4all.nl';
+$app['upload_dir'] = __DIR__ . '/../storage/uploads';
+
+// FOR DEVELOPMENT
+$app['debug'] = true;
+
+// FOR PRODUCTION
+//$app['debug'] = false;
+
+
+// LOCALE
+$app['locale'] = 'nl';
+$app['session.default_locale'] = $app['locale'];
+
+
+// DOCTRINE DBAL
+$app["db.options"] = array(
+    'driver'   => 'pdo_mysql',
+    'host'     => 'localhost',
+    'user'     => 'root',
+    'password' => 'dreis002',
+    'dbname'   => 'sandbox',
+    'charset'   => 'utf8',
+);
+
+// MAILER
+$app['swiftmailer.options'] = array(
+    'host' => 'smtp.gmail.com',
+    'port' => 465,
+    'username' => 'someuser@gmail.com',
+    'password' => 'Somepass',
+    'encryption' => 'ssl',
+    'auth_mode' => 'login'
+);
+
+// MONOLOG
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => __DIR__ . '/../../app/storage/log/prod.log',
+    'monolog.name'    => 'pid-app',
+    'monolog.level'   => Monolog\Logger::DEBUG,
+));
+
+
+// CACHES
+$app['cache.path'] = __DIR__ . '/../storage/cache';
+// Http cache
+$app['http_cache.cache_dir'] = $app['cache.path'] . '/http';
+// Twig cache
+$app['twig.options.cache'] = $app['cache.path'] . '/twig';

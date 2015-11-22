@@ -1,0 +1,72 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <h2>Sample data</h2>
+            <p>A list of things</p>
+
+            {%  if samples is not empty %}
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sample in samples %}
+                        <tr data-href="{{ path('sample-detail', { id: sample.id }) }}">
+                            <td>{{ sample.id }}</td>
+                            <td>{{ sample.title }}</td>
+                            <td>{{ sample.created_on|date('d-m-Y')  }}</td>
+
+                            <td>
+                                {% if sample.status == 1 %}
+                                    {% set statClass = 'label-success' %}
+                                {% else %}
+                                    {% set statClass = 'label-primary' %}
+                                {% endif %}
+                                <span class="label {{ statClass }}">{{ sample.status }}</span>
+                            </td>
+                            <td>
+                                <a href="{{ path('sample-detail', { id: sample.id }) }}" class="btn btn-xs btn-success" title="View"><i class="fa fa-search-plus"></i> </a>
+                                {#<a href="{{ path('sample-edit', { id: sample.id }) }}" title="Edit" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> </a>
+                                <a href="{{ path('sample-delete', { id: sample.id }) }}" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> </a>#}
+
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script type="application/javascript">
+
+    // make all rows that have a data-href attribute clickable
+    $(function(){
+        $('.table tr[data-href]').each(function(){
+            $(this).css('cursor','pointer').hover(
+                    function(){
+                        $(this).addClass('active');
+                    },
+                    function(){
+                        $(this).removeClass('active');
+                    }).click( function(){
+                        document.location = $(this).attr('data-href');
+                    }
+            );
+        });
+    });
+</script>
+{% endblock %}
