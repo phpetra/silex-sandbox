@@ -2,7 +2,7 @@
 
 // SITE configs
 $app['site_name'] = 'Silex sandbox';
-$app['site-email'] = 'dreis@xs4all.nl';
+$app['site_email'] = 'dreis@xs4all.nl';
 $app['upload_dir'] = __DIR__ . '/../storage/uploads';
 
 // FOR DEVELOPMENT
@@ -22,7 +22,7 @@ $app["db.options"] = array(
     'driver'   => 'pdo_mysql',
     'host'     => 'localhost',
     'user'     => 'root',
-    'password' => 'dreis002',
+    'password' => 'password',
     'dbname'   => 'sandbox',
     'charset'   => 'utf8',
 );
